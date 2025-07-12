@@ -35,6 +35,7 @@ jvmTarget = "11"
 appcompat = "1.7.1"
 material = "1.12.0"
 jetbrainsKotlinJvm = "2.0.21"
+lifecycleViewmodelNavigation3Android = "1.0.0-alpha03"
 
 
 [libraries]
@@ -78,6 +79,7 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-lifecycle-viewmodel-navigation3-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3-android", version.ref = "lifecycleViewmodelNavigation3Android" }
 
 
 [plugins]
