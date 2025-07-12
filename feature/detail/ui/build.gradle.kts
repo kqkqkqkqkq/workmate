@@ -35,4 +35,5 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(project(":ui-kit"))
+    implementation(project(":feature:detail:ui-logic"))
 }

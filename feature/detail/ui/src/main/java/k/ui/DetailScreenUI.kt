@@ -11,8 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun MainScreen(
-    onNavigate: () -> Unit,
+fun DetailScreenUI(
+    id: Int,
+    onBackClick: () -> Unit,
 ) {
     Scaffold(
         modifier = Modifier
@@ -24,11 +25,11 @@ fun MainScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text("Main")
+            Text("Detail $id")
             Button(
-                onClick = onNavigate,
+                onClick = onBackClick,
             ) {
-                Text("Navigate")
+                Text("Back")
             }
         }
     }

@@ -36,4 +36,5 @@ dependencies {
     implementation(libs.material)
 
     implementation(project(":ui-kit"))
+    implementation(project(":feature:main:ui-logic"))
 }

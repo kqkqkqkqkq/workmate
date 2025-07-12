@@ -17,6 +17,7 @@ viewModel = "2.9.1"
 retrofit = "3.0.0"
 kotlinx-coroutines = "1.10.1"
 retrofitAdaptersResult = "1.0.13"
+retrofit2KotlinxSerializationConverter = "1.0.0"
 
 
 okhttp = "4.12.0"
@@ -35,7 +36,6 @@ jvmTarget = "11"
 appcompat = "1.7.1"
 material = "1.12.0"
 jetbrainsKotlinJvm = "2.0.21"
-lifecycleViewmodelNavigation3Android = "1.0.0-alpha03"
 
 
 [libraries]
@@ -55,6 +55,7 @@ androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-
 # Serialization
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationCore" }
+retrofit-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 # Navigation
 androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
 androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
@@ -79,7 +80,6 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-lifecycle-viewmodel-navigation3-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3-android", version.ref = "lifecycleViewmodelNavigation3Android" }
 
 
 [plugins]
