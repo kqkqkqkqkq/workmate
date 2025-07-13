@@ -10,10 +10,11 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import k.ui_models.model.CharacterUIO
 
 @Composable
 fun CharacterItem(
-    id: Int,
+    character: CharacterUIO,
     onItemClick: (Int) -> Unit,
 ) {
     Card(
@@ -28,9 +29,9 @@ fun CharacterItem(
         ),
     ) {
         TextButton(
-            onClick = { onItemClick(id) },
+            onClick = { onItemClick(character.id) },
         ) {
-            Text("Navigate to $id")
+            Text("Navigate to ${character.id}")
         }
     }
 }

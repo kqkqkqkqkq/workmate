@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "k.ui"
+    namespace = "k.ui_models"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -24,18 +23,11 @@ android {
     kotlinOptions {
         jvmTarget = libs.versions.jvmTarget.get()
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.koin.androidx.compose)
-
-    implementation(project(":ui-kit"))
-    implementation(project(":feature:main:ui-logic"))
+    implementation(project(":core:characters-data"))
 }

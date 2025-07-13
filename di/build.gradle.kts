@@ -32,4 +32,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.koin.core)
     implementation(libs.koin.androidx.compose)
+
+    implementation(project(":core:characters-data"))
+    implementation(project(":core:characters-database"))
+    implementation(project(":core:characters-api"))
+    implementation(project(":feature:main:ui-logic"))
+    implementation(project(":feature:detail:ui-logic"))
 }

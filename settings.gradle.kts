@@ -1,12 +1,6 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
@@ -31,3 +25,4 @@ include(":feature:main:ui")
 include(":feature:main:ui-logic")
 include(":feature:detail:ui")
 include(":feature:detail:ui-logic")
+include(":common:ui-models")

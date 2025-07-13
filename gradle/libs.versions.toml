@@ -1,6 +1,6 @@
 [versions]
 agp = "8.10.1"
-kotlin = "2.0.21"
+kotlin = "2.1.21"
 coreKtx = "1.16.0"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.10.1"
@@ -25,7 +25,7 @@ coil = "2.6.0"
 
 koin = "4.0.4"
 room = "2.7.2"
-ksp = "2.0.21-1.0.27"
+ksp = "2.1.21-2.0.1"
 
 minSdk = "24"
 compileSdk = "36"
@@ -35,7 +35,7 @@ jvmTarget = "11"
 
 appcompat = "1.7.1"
 material = "1.12.0"
-jetbrainsKotlinJvm = "2.0.21"
+runtimeAndroid = "1.8.3"
 
 
 [libraries]
@@ -80,6 +80,7 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
 
 
 [plugins]
@@ -90,4 +91,4 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization"}
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

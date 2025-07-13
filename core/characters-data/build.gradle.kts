@@ -28,7 +28,6 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
 
     implementation(project(":core:characters-api"))
     implementation(project(":core:characters-database"))

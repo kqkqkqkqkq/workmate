@@ -5,11 +5,12 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import k.characters_api.model.CharacterDTO
 import k.characters_api.model.ResponseDTO
 import kotlinx.serialization.json.Json
-import retrofit2.Retrofit
 import okhttp3.MediaType.Companion.toMediaType
+import retrofit2.Retrofit
 import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * [API Documentation](https://rickandmortyapi.com/documentation)
@@ -23,16 +24,21 @@ interface CharacterApi {
         @Path("id") id: Int,
     ): CharacterDTO
 
-//    @GET("character/")
-//    suspend fun filterCharacters(): ResponseDTO
-//    TODO("add filter")
+    @GET("character")
+    suspend fun filterCharacters(
+        @Query("name") name: String? = null,
+        @Query("status") status: String? = null,
+        @Query("species") species: String? = null,
+        @Query("type") type: String? = null,
+        @Query("gender") gender: String? = null,
+    ): ResponseDTO
 }
 
 fun createCharacterApi(
     baseUrl: String,
-): CharacterApi = retrofit(baseUrl, Json).create()
+): CharacterApi = buildRetrofit(baseUrl, Json).create()
 
-private fun retrofit(
+private fun buildRetrofit(
     baseUrl: String,
     json: Json,
 ): Retrofit {
