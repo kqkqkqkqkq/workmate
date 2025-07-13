@@ -35,7 +35,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.koin.androidx.compose)
-
+    implementation(libs.coil.compose)
     implementation(project(":ui-kit"))
     implementation(project(":feature:main:ui-logic"))
 }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val repository: ICharacterRepository,
-): ViewModel() {
+) : ViewModel() {
 
     private val _state = MutableStateFlow<MainScreenState>(MainScreenState.Initial)
     val state: StateFlow<MainScreenState> = _state.asStateFlow()
