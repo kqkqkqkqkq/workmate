@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import k.characters_data.ICharacterRepository
 import k.ui_models.mapper.toCharacterUIO
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,8 +23,11 @@ class MainViewModel(
     private val _isSearching = MutableStateFlow(false)
     val isSearch: StateFlow<Boolean> = _isSearching.asStateFlow()
 
+    private val _currentPage = MutableStateFlow(1)
+    val currentPage: StateFlow<Int> = _currentPage.asStateFlow()
+
     fun getAllCharacters() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _state.value = MainScreenState.Loading
             try {
                 val characters = repository.getAllCharacters()
@@ -36,5 +40,13 @@ class MainViewModel(
                 )
             }
         }
+    }
+
+    fun getNextPage() {
+        TODO()
+    }
+
+    fun getPreviousPage() {
+        TODO()
     }
 }

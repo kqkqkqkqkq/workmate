@@ -32,6 +32,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.kotlinx.coroutines.android)
-
     implementation(project(":common:ui-models"))
+    implementation(project(":core:characters-data"))
 }

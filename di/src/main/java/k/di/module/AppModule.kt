@@ -7,14 +7,15 @@ import org.koin.dsl.module
 
 val appModule = module {
     viewModel<MainViewModel> {
-        println("[Main VM created]")
         MainViewModel(
             repository = get()
         )
     }
 
     viewModel<DetailViewModel> {
-        DetailViewModel()
+        DetailViewModel(
+            repository = get()
+        )
     }
 }
 

@@ -34,6 +34,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.coil.compose)
     implementation(project(":ui-kit"))
     implementation(project(":feature:detail:ui-logic"))
 }

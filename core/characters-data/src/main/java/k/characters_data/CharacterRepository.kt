@@ -1,14 +1,11 @@
 package k.characters_data
 
-import android.util.Log
 import k.characters_api.CharacterApi
 import k.characters_data.mapper.toCharacter
 import k.characters_data.mapper.toCharacterDBO
 import k.characters_data.model.Character
 import k.characters_database.CharacterDatabase
 import k.characters_database.model.CharacterDBO
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 
 class CharacterRepository(
     private val database: CharacterDatabase,
@@ -18,21 +15,32 @@ class CharacterRepository(
     private suspend fun loadCharacters() {
         val info = api.getAllCharacters()
         val totalPages = info.info.pages
-        val characterDBO = mutableListOf<CharacterDBO>()
-        characterDBO += info.results.map { it.toCharacterDBO() }
+        val characters = mutableListOf<CharacterDBO>()
+        characters += info.results.map { it.toCharacterDBO() }
         for (page in 2..totalPages) {
-            characterDBO += api.getAllCharacters(page = page).results.map { it.toCharacterDBO() }
+            characters += api.getAllCharacters(page = page).results.map { it.toCharacterDBO() }
         }
-        Log.e("[DATA]", characterDBO.size.toString())
+        database.dao.insertCharacters(characters)
     }
 
     override suspend fun getAllCharacters(): List<Character> {
-        loadCharacters()
-        return api.getAllCharacters().results.map { it.toCharacter() }
+        // TODO("create pagination")
+        val characters = database.dao.getAllCharacters()
+        if (characters.isEmpty()) {
+            loadCharacters()
+            return database.dao.getAllCharacters().map { it.toCharacter() }
+        }
+        return characters.map { it.toCharacter() }
     }
 
     override suspend fun getCharacter(id: Int): Character {
-        TODO("Not yet implemented")
+        val character = database.dao.getCharacter(id).toCharacter()
+        return character
+    }
+
+    override suspend fun searchCharacterByName(name: String): Character? {
+        val character = database.dao.searchCharacterByName(name)?.toCharacter()
+        return character
     }
 
 }

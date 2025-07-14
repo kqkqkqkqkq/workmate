@@ -8,7 +8,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
-import k.ui.DetailScreenUI
+import k.ui.DetailScreen
 import k.ui.MainScreen
 
 @Composable
@@ -27,12 +27,12 @@ fun WorkmateNavigation() {
             entry<Screen.Main> {
                 MainScreen(
                     onItemClick = { id ->
-                        backStack.addLast(Screen.Detail(id))
+                        backStack.add(Screen.Detail(id))
                     }
                 )
             }
             entry<Screen.Detail> { key ->
-                DetailScreenUI(id = key.id) { backStack.removeLastOrNull() }
+                DetailScreen(id = key.id) { backStack.removeLastOrNull() }
             }
         }
     )

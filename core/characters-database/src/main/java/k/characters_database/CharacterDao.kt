@@ -15,7 +15,10 @@ interface CharacterDao {
     suspend fun getAllCharacters(): List<CharacterDBO>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = :id")
-    suspend fun getCharacter(id: Int): List<CharacterDBO>
+    suspend fun getCharacter(id: Int): CharacterDBO
+
+    @Query("SELECT * FROM $TABLE_NAME WHERE name = :name")
+    suspend fun searchCharacterByName(name: String): CharacterDBO?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterDBO)

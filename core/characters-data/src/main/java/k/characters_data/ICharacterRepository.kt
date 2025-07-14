@@ -6,4 +6,6 @@ interface ICharacterRepository {
     suspend fun getAllCharacters(): List<Character>
 
     suspend fun getCharacter(id: Int): Character
+
+    suspend fun searchCharacterByName(name: String): Character?
 }

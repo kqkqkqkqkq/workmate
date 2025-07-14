@@ -15,12 +15,12 @@ fun Character.toCharacterUIO() = CharacterUIO(
     type = type,
     gender = gender,
     origin = OriginUIO(
-        name = name,
-        url = url,
+        name = origin.name,
+        url = origin.url,
     ),
     location = LocationUIO(
-        name = name,
-        url = url,
+        name = location.name,
+        url = location.url,
     ),
     image = image,
     episode = episode,
@@ -36,12 +36,12 @@ fun CharacterUIO.toCharacter() = Character(
     type = type,
     gender = gender,
     origin = Origin(
-        name = name,
-        url = url,
+        name = origin.name,
+        url = origin.url,
     ),
     location = Location(
-        name = name,
-        url = url,
+        name = location.name,
+        url = location.url,
     ),
     image = image,
     episode = episode,
