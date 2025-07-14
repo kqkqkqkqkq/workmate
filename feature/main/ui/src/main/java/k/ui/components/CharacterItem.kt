@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -38,7 +39,7 @@ fun CharacterItem(
 
     Card(
         modifier = Modifier
-            .size(144.dp, 192.dp)
+            .size(160.dp, 240.dp)
             .padding(
                 vertical = 8.dp,
             )
@@ -58,7 +59,7 @@ fun CharacterItem(
         ) {
             Box(
                 modifier = Modifier
-                    .size(144.dp)
+                    .size(160.dp)
                     .background(MaterialTheme.colorScheme.onBackground.copy(0.2f)),
                 contentAlignment = Alignment.BottomEnd,
             ) {
@@ -101,19 +102,26 @@ fun CharacterItem(
                     )
                 }
             }
-            Box(
+            Column (
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(
-                        horizontal = 4.dp
-                    )
-                    .background(MaterialTheme.colorScheme.onBackground.copy(0.2f)),
-                contentAlignment = Alignment.Center,
+                        horizontal = 8.dp,
+                    ),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = character.name,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onBackground,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                )
+                Text(
+                    text = "${character.species} | ${character.gender}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onBackground.copy(0.7f),
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
                 )

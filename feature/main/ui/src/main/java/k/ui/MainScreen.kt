@@ -1,6 +1,8 @@
 package k.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
@@ -11,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import k.ui.state.MainScreenContent
 import k.ui.state.MainScreenFailure
 import k.ui.state.MainScreenInitial
@@ -52,6 +55,10 @@ fun MainScreenUI(
                 isRefreshing = false
             }
         },
+        modifier = Modifier
+            .background(
+                color = MaterialTheme.colorScheme.background,
+            )
     ) {
         val state by viewModel.state.collectAsState()
 

@@ -16,6 +16,12 @@ class MainViewModel(
     private val _state = MutableStateFlow<MainScreenState>(MainScreenState.Initial)
     val state: StateFlow<MainScreenState> = _state.asStateFlow()
 
+    private val _searchText = MutableStateFlow("")
+    val search: StateFlow<String> = _searchText.asStateFlow()
+
+    private val _isSearching = MutableStateFlow(false)
+    val isSearch: StateFlow<Boolean> = _isSearching.asStateFlow()
+
     fun getAllCharacters() {
         viewModelScope.launch {
             _state.value = MainScreenState.Loading
