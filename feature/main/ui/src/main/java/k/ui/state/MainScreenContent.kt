@@ -32,8 +32,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import k.ui.components.CharacterItem
 import k.ui.components.CharacterPager
-import k.ui.components.FilterBottomSheet
 import k.ui.components.CharactersTopBar
+import k.ui.components.FilterBottomSheet
 import k.ui_logic.MainViewModel
 import k.ui_logic.utils.SearchState
 import k.ui_models.model.CharacterUIO
@@ -120,8 +120,7 @@ fun MainScreenContent(
                                 )
                             }
                         }
-                    }
-                    else {
+                    } else {
                         items(characters) { character ->
                             Box(
                                 modifier = Modifier

@@ -32,10 +32,6 @@ class MainViewModel(
     private val _pagerSize = MutableStateFlow(Constants.TOTAL_PAGES)
     val pagerSize: StateFlow<Int> = _pagerSize.asStateFlow()
 
-    fun getPages() {
-
-    }
-
     fun getAllCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
             _state.value = MainScreenState.Loading
