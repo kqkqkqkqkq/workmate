@@ -1,6 +1,5 @@
 package k.characters_data
 
-import android.util.Log
 import k.characters_api.CharacterApi
 import k.characters_data.mapper.toCharacter
 import k.characters_data.mapper.toCharacterDBO
@@ -52,5 +51,22 @@ class CharacterRepository(
 
     override suspend fun getDatabaseSize(): Int =
         database.dao.getDatabaseSize()
+
+    override suspend fun filterCharacters(
+        name: String?,
+        status: List<String>?,
+        species: String?,
+        type: String?,
+        gender: List<String>?,
+    ): List<Character> {
+        val character = database.dao.filterCharacters(
+            name,
+            status,
+            species,
+            type,
+            gender,
+        ).map { it.toCharacter() }
+        return character
+    }
 
 }

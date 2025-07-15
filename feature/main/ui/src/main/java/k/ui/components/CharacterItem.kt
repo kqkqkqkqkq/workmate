@@ -30,10 +30,10 @@ fun CharacterItem(
     onItemClick: (Int) -> Unit,
 ) {
 
-    val COLORS = mapOf(
+    val colors = mapOf(
         "Alive" to Color.Green,
         "Dead" to Color.Red,
-        "unknow" to Color.LightGray,
+        "unknown" to Color.LightGray,
     )
 
     Card(
@@ -88,7 +88,7 @@ fun CharacterItem(
                         modifier = Modifier
                             .size(8.dp)
                             .background(
-                                color = COLORS[character.status] ?: Color.LightGray,
+                                color = colors[character.status] ?: Color.LightGray,
                                 shape = CircleShape,
                             )
                     )

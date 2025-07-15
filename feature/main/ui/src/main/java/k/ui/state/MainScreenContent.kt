@@ -179,6 +179,7 @@ fun MainScreenContent(
     }
 
     FilterBottomSheet(
+        viewModel = viewModel,
         isBottomSheetVisible = isBottomSheetVisible,
         sheetState = sheetState,
         onDismiss = {

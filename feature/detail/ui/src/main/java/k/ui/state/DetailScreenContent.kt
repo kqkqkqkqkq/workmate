@@ -40,10 +40,10 @@ fun DetailScreenContent(
     character: CharacterUIO,
     onBackClick: () -> Unit,
 ) {
-    val COLORS = mapOf(
+    val colors = mapOf(
         "Alive" to Color.Green,
         "Dead" to Color.Red,
-        "unknow" to Color.LightGray,
+        "unknown" to Color.LightGray,
     )
 
     Scaffold(
@@ -123,7 +123,7 @@ fun DetailScreenContent(
                         modifier = Modifier
                             .size(32.dp)
                             .background(
-                                color = COLORS[character.status] ?: Color.LightGray,
+                                color = colors[character.status] ?: Color.LightGray,
                                 shape = CircleShape,
                             )
                     )

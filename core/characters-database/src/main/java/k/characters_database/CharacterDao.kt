@@ -17,7 +17,12 @@ interface CharacterDao {
     @Query("SELECT * FROM $TABLE_NAME WHERE id = :id")
     suspend fun getCharacter(id: Int): CharacterDBO
 
-    @Query("SELECT * FROM $TABLE_NAME WHERE name = :name")
+    @Query(
+        """
+        SELECT * FROM $TABLE_NAME
+        WHERE name LIKE '%' || :name || '%'
+    """
+    )
     suspend fun searchCharacterByName(name: String): List<CharacterDBO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -35,19 +40,19 @@ interface CharacterDao {
     @Query(
         """
         SELECT * FROM $TABLE_NAME
-        WHERE (:name IS NULL OR name LIKE :name)
-          AND (:status IS NULL OR status = :status)
-          AND (:species IS NULL OR species = :species)
-          AND (:type IS NULL OR type = :type)
-          AND (:gender IS NULL OR gender = :gender)
+            WHERE (:name IS NULL OR name LIKE '%' || :name || '%')
+            AND (:status IS NULL OR status IN (:status))
+            AND (:species IS NULL OR species = :species)
+            AND (:type IS NULL OR type = :type)
+            AND (:gender IS NULL OR gender IN (:gender))
     """
     )
     suspend fun filterCharacters(
         name: String? = null,
-        status: String? = null,
+        status: List<String>? = null,
         species: String? = null,
         type: String? = null,
-        gender: String? = null,
+        gender: List<String>? = null,
     ): List<CharacterDBO>
 
     @Query(

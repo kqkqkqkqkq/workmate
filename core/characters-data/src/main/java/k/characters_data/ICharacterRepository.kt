@@ -12,4 +12,12 @@ interface ICharacterRepository {
     suspend fun searchCharacterByName(name: String): List<Character>
 
     suspend fun getDatabaseSize(): Int
+
+    suspend fun filterCharacters(
+        name: String?,
+        status: List<String>?,
+        species: String?,
+        type: String?,
+        gender: List<String>?,
+    ): List<Character>
 }
