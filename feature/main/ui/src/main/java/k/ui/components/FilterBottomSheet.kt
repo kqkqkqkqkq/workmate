@@ -217,14 +217,14 @@ fun FilterBottomSheet(
                         val status = buildList {
                             if (statusAlive) add("Alive")
                             if (statusDead) add("Dead")
-                            if (statusUnknown) add("Unknown")
+                            if (statusUnknown) add("unknown")
                         }
 
                         val gender = buildList {
                             if (genderMale) add("Male")
                             if (genderFemale) add("Female")
                             if (genderGenderless) add("Genderless")
-                            if (genderUnknown) add("Unknown")
+                            if (genderUnknown) add("unknown")
                         }
 
                         viewModel.filter(

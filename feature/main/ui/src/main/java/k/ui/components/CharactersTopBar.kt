@@ -52,7 +52,7 @@ fun CharactersTopBar(
                     style = MaterialTheme.typography.bodyLarge,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    color = MaterialTheme.colorScheme.onBackground.copy(0.7f),
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier
                         .padding(start = 12.dp),
                 )

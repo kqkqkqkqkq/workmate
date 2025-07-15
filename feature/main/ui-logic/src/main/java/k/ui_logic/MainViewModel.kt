@@ -1,6 +1,5 @@
 package k.ui_logic
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import k.characters_data.ICharacterRepository
@@ -101,7 +100,6 @@ class MainViewModel(
                     characters = characters.map { it.toCharacterUIO() }
                 )
                 _pagerSize.value = characters.size / Constants.PAGE_SIZE + 1
-                Log.e("[PARAMS]", "$name\n$status\n$species\n$type\n$gender")
             } catch (e: Exception) {
                 _state.value = MainScreenState.Failure(
                     message = "Unexpected error: ${e.message ?: "Unknown error"}"
@@ -122,6 +120,15 @@ class MainViewModel(
                     _state.value = MainScreenState.Content(
                         characters = characters.map { it.toCharacterUIO() }
                     )
+                    _statusAlive.value = false
+                    _statusDead.value = false
+                    _statusUnknown.value = false
+                    _genderMale.value = false
+                    _genderFemale.value = false
+                    _genderGenderless.value = false
+                    _genderUnknown.value = false
+                    _type.value = ""
+                    _species.value = ""
                 } catch (e: Exception) {
                     _state.value = MainScreenState.Failure(
                         message = "Unexpected error: ${e.message ?: "Unknown error"}"
