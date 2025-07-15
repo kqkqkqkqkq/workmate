@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import k.ui.state.MainScreenContent
 import k.ui.state.MainScreenFailure
 import k.ui.state.MainScreenInitial
@@ -39,11 +40,15 @@ fun MainScreenUI(
     viewModel: MainViewModel = koinViewModel(),
     onItemClick: (Int) -> Unit,
 ) {
+
+    val state by viewModel.state.collectAsState()
     val coroutineScope = rememberCoroutineScope()
+
     val refreshState = rememberPullToRefreshState()
     var isRefreshing by remember {
         mutableStateOf(false)
     }
+
     PullToRefreshBox(
         state = refreshState,
         isRefreshing = isRefreshing,
@@ -51,6 +56,7 @@ fun MainScreenUI(
             coroutineScope.launch {
                 isRefreshing = true
                 delay(3000)
+                viewModel.loadCharacters()
                 viewModel.getAllCharacters()
                 isRefreshing = false
             }
@@ -60,8 +66,6 @@ fun MainScreenUI(
                 color = MaterialTheme.colorScheme.background,
             )
     ) {
-        val state by viewModel.state.collectAsState()
-
         when (val currentState = state) {
             is MainScreenState.Content -> MainScreenContent(
                 characters = currentState.characters,

@@ -18,7 +18,7 @@ interface CharacterDao {
     suspend fun getCharacter(id: Int): CharacterDBO
 
     @Query("SELECT * FROM $TABLE_NAME WHERE name = :name")
-    suspend fun searchCharacterByName(name: String): CharacterDBO?
+    suspend fun searchCharacterByName(name: String): List<CharacterDBO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterDBO)
@@ -49,4 +49,16 @@ interface CharacterDao {
         type: String? = null,
         gender: String? = null,
     ): List<CharacterDBO>
+
+    @Query(
+        """
+        SELECT * FROM $TABLE_NAME
+        ORDER BY id
+        LIMIT :limit OFFSET :offset
+    """
+    )
+    suspend fun getPage(limit: Int, offset: Int): List<CharacterDBO>
+
+    @Query("SELECT COUNT(*) FROM $TABLE_NAME")
+    suspend fun getDatabaseSize(): Int
 }

@@ -1,5 +1,6 @@
 package k.characters_data
 
+import android.util.Log
 import k.characters_api.CharacterApi
 import k.characters_data.mapper.toCharacter
 import k.characters_data.mapper.toCharacterDBO
@@ -12,7 +13,7 @@ class CharacterRepository(
     private val api: CharacterApi,
 ) : ICharacterRepository {
 
-    private suspend fun loadCharacters() {
+    override suspend fun loadCharacters() {
         val info = api.getAllCharacters()
         val totalPages = info.info.pages
         val characters = mutableListOf<CharacterDBO>()
@@ -23,12 +24,18 @@ class CharacterRepository(
         database.dao.insertCharacters(characters)
     }
 
-    override suspend fun getAllCharacters(): List<Character> {
-        // TODO("create pagination")
-        val characters = database.dao.getAllCharacters()
+    override suspend fun getAllCharacters(page: Int, pageSize: Int): List<Character> {
+        val offset = (page - 1) * pageSize
+        val characters = database.dao.getPage(
+            limit = pageSize,
+            offset = offset,
+        )
         if (characters.isEmpty()) {
             loadCharacters()
-            return database.dao.getAllCharacters().map { it.toCharacter() }
+            return database.dao.getPage(
+                limit = pageSize,
+                offset = offset,
+            ).map { it.toCharacter() }
         }
         return characters.map { it.toCharacter() }
     }
@@ -38,9 +45,12 @@ class CharacterRepository(
         return character
     }
 
-    override suspend fun searchCharacterByName(name: String): Character? {
-        val character = database.dao.searchCharacterByName(name)?.toCharacter()
+    override suspend fun searchCharacterByName(name: String): List<Character> {
+        val character = database.dao.searchCharacterByName(name).map { it.toCharacter() }
         return character
     }
+
+    override suspend fun getDatabaseSize(): Int =
+        database.dao.getDatabaseSize()
 
 }
