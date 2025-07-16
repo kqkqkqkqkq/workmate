@@ -10,30 +10,33 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import k.ui.DetailScreen
 import k.ui.MainScreen
+import k.ui_kit.theme.WorkmateTheme
 
 @Composable
 fun WorkmateNavigation() {
-    val backStack = rememberNavBackStack<Screen>(Screen.Main)
+    WorkmateTheme {
+        val backStack = rememberNavBackStack<Screen>(Screen.Main)
 
-    NavDisplay(
-        backStack = backStack,
-        onBack = { backStack.removeLastOrNull() },
-        entryDecorators = listOf(
-            rememberSavedStateNavEntryDecorator(),
-            rememberViewModelStoreNavEntryDecorator(),
-            rememberSceneSetupNavEntryDecorator()
-        ),
-        entryProvider = entryProvider {
-            entry<Screen.Main> {
-                MainScreen(
-                    onItemClick = { id ->
-                        backStack.add(Screen.Detail(id))
-                    }
-                )
+        NavDisplay(
+            backStack = backStack,
+            onBack = { backStack.removeLastOrNull() },
+            entryDecorators = listOf(
+                rememberSavedStateNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator(),
+                rememberSceneSetupNavEntryDecorator()
+            ),
+            entryProvider = entryProvider {
+                entry<Screen.Main> {
+                    MainScreen(
+                        onItemClick = { id ->
+                            backStack.add(Screen.Detail(id))
+                        }
+                    )
+                }
+                entry<Screen.Detail> { key ->
+                    DetailScreen(id = key.id) { backStack.removeLastOrNull() }
+                }
             }
-            entry<Screen.Detail> { key ->
-                DetailScreen(id = key.id) { backStack.removeLastOrNull() }
-            }
-        }
-    )
+        )
+    }
 }

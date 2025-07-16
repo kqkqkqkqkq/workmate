@@ -70,7 +70,7 @@ class MainViewModel(
                 _state.value = MainScreenState.Content(
                     characters = characters.map { it.toCharacterUIO() }
                 )
-                _pagerSize.value = characters.size / Constants.PAGE_SIZE + 1
+                _pagerSize.value = 1
             } catch (e: Exception) {
                 _state.value = MainScreenState.Failure(
                     message = "Unexpected error: ${e.message ?: "Unknown error"}"
@@ -99,7 +99,7 @@ class MainViewModel(
                 _state.value = MainScreenState.Content(
                     characters = characters.map { it.toCharacterUIO() }
                 )
-                _pagerSize.value = characters.size / Constants.PAGE_SIZE + 1
+                _pagerSize.value = 1
             } catch (e: Exception) {
                 _state.value = MainScreenState.Failure(
                     message = "Unexpected error: ${e.message ?: "Unknown error"}"

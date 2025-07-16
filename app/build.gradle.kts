@@ -43,5 +43,4 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(project(":navigation"))
     implementation(project(":di"))
-    implementation(project(":ui-kit"))
 }

@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
+    implementation(project(":ui-kit"))
     implementation(project(":feature:main:ui"))
     implementation(project(":feature:detail:ui"))
 }

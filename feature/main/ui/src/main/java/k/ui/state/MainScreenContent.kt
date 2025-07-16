@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -105,6 +106,25 @@ fun MainScreenContent(
                     verticalArrangement = Arrangement.Top,
                     horizontalArrangement = Arrangement.Center,
                 ) {
+                    if (pagerSize == 1) {
+                        item(span = { GridItemSpan(maxLineSpan) }) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(
+                                        horizontal = 20.dp,
+                                    ),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.Start,
+                            ) {
+                                Text(
+                                    text = "Showed ${characters.size} characters",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onBackground.copy(0.6f),
+                                )
+                            }
+                        }
+                    }
                     if (characters.isEmpty()) {
                         item(span = { GridItemSpan(maxLineSpan) }) {
                             Box(
