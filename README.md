@@ -1,5 +1,7 @@
 # Workmate
 
+[![Download_APK](https://img.shields.io/badge/Download_APK-brightgreen?logo=android)](https://github.com/kqkqkqkqkq/workmate/releases/latest)
+
 ### Технологии
 
 - Kotlin – 2.1.21
